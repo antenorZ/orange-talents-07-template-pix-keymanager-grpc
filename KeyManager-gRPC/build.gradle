@@ -5,6 +5,7 @@ plugins {
     id("io.micronaut.application") version "2.0.4"
     id("org.jetbrains.kotlin.plugin.allopen") version "1.5.21"
     id("com.google.protobuf") version "0.8.15"
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.5.21"
 }
 
 version = "0.1"
@@ -12,6 +13,11 @@ group = "br.com.zup"
 
 repositories {
     mavenCentral()
+}
+
+allOpen{
+    annotation("jakarta.inject.Singleton")
+    annotation("io.micronaut.http.annotation.Controller")
 }
 
 micronaut {
@@ -29,12 +35,19 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api")
     implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}")
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+    implementation("io.micronaut.data:micronaut-data-hibernate-jpa")
+
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.postgresql:postgresql")
+
     implementation("io.micronaut:micronaut-validation")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     testImplementation("io.micronaut:micronaut-http-client")
+
 
 }
 

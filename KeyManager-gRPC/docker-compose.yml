@@ -8,3 +8,28 @@ services:
     image: "public.ecr.aws/d8b2x5c9/orange-stack-sat-itau-erp"
     ports:
       - 9091:9091
+  postgres:
+    image: 'postgres:9.6-alpine'
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: keycloak
+      POSTGRES_HOST: postgres
+  postgres-keymanagergrpc:
+    image: 'postgres:9.6-alpine'
+    volumes:
+      - keymanagergrpc-volume:/var/lib/postgresql/data
+    ports:
+      - 5433:5432 # porta_maquia_host:porta_do_container_do_docker
+    environment:
+      POSTGRES_USER: keymanagergrpc
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: keymanagergrpc
+
+volumes:
+  postgres-volume:
+  keymanagergrpc-volume:
