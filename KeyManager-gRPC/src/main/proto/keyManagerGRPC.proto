@@ -13,6 +13,10 @@ service KeyManagerGRPCService {
   rpc registraChavePix(RegistraChavePixRequest) returns (RegistraChavePixResponse){}
 }
 
+service KeyManagerRemoveGRPCService{
+  rpc remove(RemoveChavePixRequest) returns (RemoveChavePixResponse){}
+}
+
 enum TipoChave{
   UNKNOWN_TIPO_CHAVE = 0;
   CPF = 1;
@@ -41,6 +45,16 @@ message RegistraChavePixResponse{
 
 message KeyManagerGRPCRequest {
   string name = 1;
+}
+
+message RemoveChavePixRequest{
+  string clientId = 1;
+  string pixKey = 2;
+}
+
+message RemoveChavePixResponse{
+  string clientId = 1;
+  string pixKey = 2;
 }
 
 message KeyManagerGRPCReply {
