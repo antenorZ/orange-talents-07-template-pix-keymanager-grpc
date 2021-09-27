@@ -14,9 +14,11 @@ import javax.validation.Valid
 class NovaChavePixService(@Inject val itauClient: ItauClient,
                           @Inject val chavePixRepository: ChavePixRepository){
 
-
+    @Transactional
     fun registra(@Valid novaChave: NovaChavePixDTO): ChavePix{
 
+        if(chavePixRepository.existsByChave(novaChave.chave))
+            throw IllegalStateException("A chave inserida já existe no banco de dados")
 
         val dadosContaResponse = itauClient.
             buscaContaPorTipo(novaChave.clientId!!, novaChave.tipoConta!!.name)
