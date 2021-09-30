@@ -1,11 +1,10 @@
 package br.com.zup.pix.model
 
+import br.com.zup.pix.client.bcb.dto.CreatePixKeyResponse
 import br.com.zup.pix.model.enums.TipoChave
 import br.com.zup.pix.model.enums.TipoConta
-import br.com.zup.pix.validation.ValidPixKey
 import br.com.zup.pix.validation.ValidUUID
 import java.time.LocalDateTime
-import java.util.*
 import javax.persistence.*
 import javax.validation.Valid
 import javax.validation.constraints.NotBlank
@@ -22,7 +21,7 @@ class ChavePix(
     val tipo: TipoChave?,
 
     @field:NotBlank
-    val chave: String?,
+    var chave: String?,
 
     @field:NotNull
     val tipoConta: TipoConta,
@@ -35,4 +34,9 @@ class ChavePix(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
     val criadaEm: LocalDateTime = LocalDateTime.now()
+    
+
+    fun atualizaChave(createPixKeyResponse: String){
+        this.chave = createPixKeyResponse
+    }
 }

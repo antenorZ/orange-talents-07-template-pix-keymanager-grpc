@@ -20,7 +20,7 @@ class RegistraChave(@Inject private val service: NovaChavePixService): KeyManage
 
         responseObserver!!.onNext(RegistraChavePixResponse.newBuilder()
                                 .setClientId(chaveCriada.clientId.toString())
-                                .setPixKey(chaveCriada.id.toString())
+                                .setPixKey(chaveCriada.chave)
                                 .build())
         responseObserver!!.onCompleted()
     }

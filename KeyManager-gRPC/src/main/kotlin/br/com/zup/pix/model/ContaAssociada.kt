@@ -1,5 +1,8 @@
 package br.com.zup.pix.model
 
+import br.com.zup.pix.client.itau.dto.response.DadosContaResponse
+import br.com.zup.pix.client.itau.dto.response.InstituicaoResponse
+import br.com.zup.pix.client.itau.dto.response.TitularResponse
 import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -31,4 +34,14 @@ class ContaAssociada(
     companion object {
         public val ITAU_UNIBANCO_ISPB: String = "60701190"
     }
+
+//    fun toDto():DadosContaResponse{
+//        return DadosContaResponse(
+//            instituicao = InstituicaoResponse(instituicao, ITAU_UNIBANCO_ISPB),
+//            agencia = agencia,
+//            numero = numeroConta,
+//            titular = TitularResponse("c56dfef4-7901-44fb-84e2-a2cefb157890",nomeTitular, cpfTitular)
+//        )
+//
+//    }
 }

@@ -22,7 +22,7 @@ data class NovaChavePixDTO(
     @Enumerated(EnumType.STRING)
     val tipo: TipoChave?,
 
-    @field:NotBlank
+
     @field:Size(max = 77)
     val chave: String?,
 
