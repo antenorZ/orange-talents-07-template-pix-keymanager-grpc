@@ -34,7 +34,7 @@ class ChavePix(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
     val criadaEm: LocalDateTime = LocalDateTime.now()
-    
+
 
     fun atualizaChave(createPixKeyResponse: String){
         this.chave = createPixKeyResponse
