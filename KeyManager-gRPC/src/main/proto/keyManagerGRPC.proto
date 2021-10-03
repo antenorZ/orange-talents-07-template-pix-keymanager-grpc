@@ -13,6 +13,10 @@ service KeyManagerGRPCService {
   rpc registraChavePix(RegistraChavePixRequest) returns (RegistraChavePixResponse){}
 }
 
+service KeyManagerListaService{
+  rpc lista(ListaChavePixRequest) returns (ListaChavePixResponse){}
+}
+
 service KeyManagerRemoveGRPCService{
   rpc remove(RemoveChavePixRequest) returns (RemoveChavePixResponse){}
 }
@@ -92,6 +96,21 @@ message CarregaChavePixResponse{
   string clientId = 1;
   string pixId = 2;
   ChavePix chave = 3;
+}
+
+message ListaChavePixRequest{
+  string clientId = 1;
+}
+
+message ListaChavePixResponse{
+  message ChavePix{
+    string pixId = 1;
+    TipoChave tipo = 2;
+    string chave = 3;
+    TipoConta tipoConta = 4;
+  }
+  string clientId = 1;
+  repeated ChavePix chaves = 2;
 }
 
 message KeyManagerGRPCReply {

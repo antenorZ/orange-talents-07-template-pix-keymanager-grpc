@@ -1,5 +1,8 @@
 package br.com.zup.pix.model.enums
 
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
+
 
 enum class TipoChave {
     CPF{

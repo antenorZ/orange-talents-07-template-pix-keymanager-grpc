@@ -22,12 +22,14 @@ class ChavePix(
     val clientId: String?,
 
     @field:NotNull
+//    @Enumerated(EnumType.STRING)
     val tipo: TipoChave?,
 
     @field:NotBlank
     var chave: String?,
 
     @field:NotNull
+//    @Enumerated(EnumType.STRING)
     val tipoConta: TipoConta,
 
     @field:Valid

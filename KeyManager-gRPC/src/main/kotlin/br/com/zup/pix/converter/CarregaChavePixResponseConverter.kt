@@ -13,10 +13,10 @@ class CarregaChavePixResponseConverter {
             .setPixId(chavePix.pixId)
             .setChave(CarregaChavePixResponse.ChavePix
                 .newBuilder()
-                .setTipo(TipoChave.valueOf(chavePix.tipo!!.name))
+                .setTipo(br.com.zup.TipoChave.valueOf(chavePix.tipo!!.name))
                 .setChave(chavePix.chave)
                 .setConta(CarregaChavePixResponse.ChavePix.ContaInfo.newBuilder()
-                    .setTipo(TipoConta.valueOf(chavePix.tipo.name))
+                    .setTipo(br.com.zup.TipoConta.valueOf(chavePix.tipoConta.name))
                     .setInstituicao(chavePix.conta.instituicao)
                     .setNomeTitular(chavePix.conta.nomeTitular)
                     .setCpfTitular(chavePix.conta.cpfTitular)
