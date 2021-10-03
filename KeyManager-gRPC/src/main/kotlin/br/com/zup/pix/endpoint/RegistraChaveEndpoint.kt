@@ -10,7 +10,7 @@ import jakarta.inject.Inject
 import jakarta.inject.Singleton
 
 @Singleton
-class RegistraChave(@Inject private val service: NovaChavePixService): KeyManagerGRPCServiceGrpc.KeyManagerGRPCServiceImplBase(){
+class RegistraChaveEndpoint(@Inject private val service: NovaChavePixService): KeyManagerGRPCServiceGrpc.KeyManagerGRPCServiceImplBase(){
     override fun registraChavePix(
         request: RegistraChavePixRequest?,
         responseObserver: StreamObserver<RegistraChavePixResponse>?

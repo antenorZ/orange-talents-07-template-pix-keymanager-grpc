@@ -4,7 +4,7 @@ import br.com.zup.pix.client.bcb.BcbClient
 import br.com.zup.pix.client.bcb.dto.CreatePixKeyRequest
 import br.com.zup.pix.client.itau.ItauClient
 import br.com.zup.pix.model.ChavePix
-import br.com.zup.pix.model.NovaChavePixDTO
+import br.com.zup.pix.model.dto.NovaChavePixDTO
 import br.com.zup.pix.repository.ChavePixRepository
 import io.micronaut.http.HttpStatus
 import jakarta.inject.Inject

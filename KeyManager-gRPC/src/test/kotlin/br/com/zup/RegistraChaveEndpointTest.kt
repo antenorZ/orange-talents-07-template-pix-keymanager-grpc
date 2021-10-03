@@ -17,9 +17,10 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import java.util.*
 
 @MicronautTest(transactional = false)
-internal class RegistraChaveTest(
+internal class RegistraChaveEndpointTest(
     val repository: ChavePixRepository,
     val grpcClient: KeyManagerGRPCServiceGrpc.KeyManagerGRPCServiceBlockingStub
 ){
@@ -52,6 +53,7 @@ internal class RegistraChaveTest(
     @Test
     fun `nao cadastra chave repetida`(){
         repository.save(ChavePix(
+            pixId = UUID.randomUUID().toString(),
             clientId = CLIENT_ID,
             tipo = br.com.zup.pix.model.enums.TipoChave.CPF,
             chave = "02467781054",

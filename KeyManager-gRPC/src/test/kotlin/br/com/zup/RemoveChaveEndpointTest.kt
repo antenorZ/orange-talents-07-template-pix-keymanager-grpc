@@ -22,7 +22,7 @@ import org.junit.jupiter.api.assertThrows
 import java.util.*
 
 @MicronautTest(transactional = false)
-internal class RemoveChaveTest(
+internal class RemoveChaveEndpointTest(
     val repository: ChavePixRepository,
     val grpcClient: KeyManagerRemoveGRPCServiceGrpc.KeyManagerRemoveGRPCServiceBlockingStub
     )
@@ -43,7 +43,8 @@ internal class RemoveChaveTest(
     fun `deve remover chave pix`(){
         repository.save(
             ChavePix(
-            clientId = RegistraChaveTest.CLIENT_ID,
+            pixId = UUID.randomUUID().toString(),
+            clientId = RegistraChaveEndpointTest.CLIENT_ID,
             tipo = TipoChave.CPF,
             chave = "02467781054",
             tipoConta = TipoConta.CONTA_CORRENTE,

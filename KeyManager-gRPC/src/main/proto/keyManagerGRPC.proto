@@ -17,6 +17,10 @@ service KeyManagerRemoveGRPCService{
   rpc remove(RemoveChavePixRequest) returns (RemoveChavePixResponse){}
 }
 
+service KeyManagerCarregaGRPCService{
+  rpc carrega(CarregaChavePixRequest) returns (CarregaChavePixResponse){}
+}
+
 enum TipoChave{
   UNKNOWN_TIPO_CHAVE = 0;
   CPF = 1;
@@ -55,6 +59,39 @@ message RemoveChavePixRequest{
 message RemoveChavePixResponse{
   string clientId = 1;
   string pixKey = 2;
+}
+
+message CarregaChavePixRequest{
+  message FiltroPorPixId{
+    string clientId = 1;
+    string pixId = 2;
+  }
+
+  oneof filtro{
+    FiltroPorPixId pixId = 1;
+    string chave = 2;
+  }
+}
+
+message CarregaChavePixResponse{
+  message ChavePix{
+    message ContaInfo{
+      TipoConta tipo = 1;
+      string instituicao = 2;
+      string nomeTitular = 3;
+      string cpfTitular = 4;
+      string agencia = 5;
+      string numeroConta = 6;
+    }
+
+    TipoChave tipo = 1;
+    string chave = 2;
+    ContaInfo conta = 3;
+  }
+
+  string clientId = 1;
+  string pixId = 2;
+  ChavePix chave = 3;
 }
 
 message KeyManagerGRPCReply {

@@ -1,5 +1,7 @@
-package br.com.zup.pix.model
+package br.com.zup.pix.model.dto
 
+import br.com.zup.pix.model.ChavePix
+import br.com.zup.pix.model.ContaAssociada
 import br.com.zup.pix.model.enums.*
 import br.com.zup.pix.validation.ValidPixKey
 import br.com.zup.pix.validation.ValidUUID
@@ -8,7 +10,6 @@ import java.util.*
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @ValidPixKey
@@ -22,7 +23,6 @@ data class NovaChavePixDTO(
     @Enumerated(EnumType.STRING)
     val tipo: TipoChave?,
 
-
     @field:Size(max = 77)
     val chave: String?,
 
@@ -30,8 +30,9 @@ data class NovaChavePixDTO(
     @Enumerated(EnumType.STRING)
     val tipoConta: TipoConta?
 ){
-    fun toModel(contaAssociada: ContaAssociada):ChavePix{
+    fun toModel(contaAssociada: ContaAssociada): ChavePix {
         return ChavePix(
+            pixId = UUID.randomUUID().toString(),
             clientId = this.clientId,
             tipo = TipoChave.valueOf(this.tipo!!.name),
             chave = if (this.tipo == TipoChave.ALEATORIA)

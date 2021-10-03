@@ -9,7 +9,7 @@ import jakarta.inject.Inject
 import jakarta.inject.Singleton
 
 @Singleton
-class RemoveChave(@Inject private val service: RemoveChaveService): KeyManagerRemoveGRPCServiceGrpc.KeyManagerRemoveGRPCServiceImplBase(){
+class RemoveChaveEndpoint(@Inject private val service: RemoveChaveService): KeyManagerRemoveGRPCServiceGrpc.KeyManagerRemoveGRPCServiceImplBase(){
     override fun remove(request: RemoveChavePixRequest, responseObserver: StreamObserver<RemoveChavePixResponse>) {
 
         service.remove(clientId = request.clientId, pixKey = request.pixKey)

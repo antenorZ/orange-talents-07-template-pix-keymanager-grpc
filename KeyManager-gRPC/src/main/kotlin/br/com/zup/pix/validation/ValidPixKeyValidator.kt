@@ -1,6 +1,6 @@
 package br.com.zup.pix.validation
 
-import br.com.zup.pix.model.NovaChavePixDTO
+import br.com.zup.pix.model.dto.NovaChavePixDTO
 import br.com.zup.pix.model.enums.TipoChave
 import io.micronaut.core.annotation.AnnotationValue
 import io.micronaut.validation.validator.constraints.ConstraintValidator
